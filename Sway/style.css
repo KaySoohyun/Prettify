@@ -1,0 +1,83 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Mononoki;
+    font-size: 18px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(0, 72, 77, 0.9);
+}
+
+#workspaces button {
+    margin: 4px;
+    padding: 8px;
+    background-color: rgba(0, 72, 77, 1);
+    color: white;
+    border-bottom: 3px solid transparent;
+    border-radius: 8px;
+}
+
+#workspaces button:hover {
+    background: #ff8820;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    color: #00484d;
+}
+
+#workspaces button.focused {
+    background-color: #ff5959;
+    color: white;
+}
+
+#workspaces button.urgent {
+    background-color: #ffc920;
+    color: #ff0026;
+}
+
+#tray,
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network {
+    font-size: 16px;
+    background-color: rgba(0, 72, 77, 1);
+    color: white;
+    padding: 6px;
+    margin: 2px;
+    border-radius: 4px;
+}
+
+#battery.charging {
+    color: white;
+    background-color: #4ffa4a;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #ffc920;
+    color: #ff0026;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#network.disconnected {
+    background-color: #ffc920;
+    color: #ff0026;
+}
+
+@keyframes blink { 
+    to { 
+        background-color: rgba(0, 72, 77, 1); 
+        color: white;
+    }
+}

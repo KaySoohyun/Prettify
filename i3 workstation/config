@@ -1,0 +1,156 @@
+# i3 config file (v4)
+
+set $mod Mod4
+
+# Font for window titles.
+font pango:meslo bold 9
+
+# This font is other option:
+#font pango:DejaVu Sans Mono 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# TODO terminal
+# start a terminal
+bindsym $mod+Return exec termite
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu
+bindsym $mod+d exec dmenu_run
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus right
+bindsym $mod+l focus down
+bindsym $mod+semicolon focus up
+
+# move focused window IDK
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# focus always follows mouse
+focus_follows_mouse yes
+
+# focus on window activation
+focus_on_window_activation urgent
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "Browser"
+set $ws2 "Code"
+set $ws3 "Term"
+set $ws4 "Music"
+set $ws5 "Coffee"
+set $ws6 "Ses"
+set $ws7 "LuckySeven"
+set $ws8 "Ok"
+set $ws9 "Naux"
+set $ws10 "Dek"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# TODO Buscar una aplicacion
+# screenshot
+# bindsym $mod+p exec deepin-screenshot
+
+# TODO file manager, spotify
+# cool shortcuts for my favorite apps
+#bindsym $mod+n exec  nemo
+bindsym $mod+m exec  firefox
+bindsym $mod+q workspace $ws4; exec --no-startup-id spotify
+bindsym $mod+t exec  telegram-desktop
+bindsym $mod+c exec  code
+
+# keeps wallpaper on
+exec --no-startup-id nitrogen --restore
+
+# start number keyboard
+exec --no-startup-id numlockx on
+
+# start i3bar to display a workspace bar
+bar {
+    status_command i3status
+    strip_workspace_numbers yes
+    font pango: meslo 9
+    
+    colors {
+        background #000000
+        statusline #04B4AE
+        separator #F7FE2E
+        focused_workspace  #0A2229 #0A2229 #04B4AE
+        inactive_workspace #0A2229 #151515 #6E6E6E
+        urgent_workspace   #0A2229 #B40404 #F7FE2E
+    }
+
+}
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #0A2229 #0A2229 #04B4AE #0A2229   #0A2229
+client.focused_inactive #0A2229 #151515 #848484 #484e50   #151515
+client.unfocused        #0A2229 #151515 #848484 #292d2e   #151515
+client.urgent           #B40404 #B40404 #F7FE2E #900000   #B40404
+client.placeholder      #0A2229 #151515 #ffffff #151515   #151515
+
+client.background       #151515
